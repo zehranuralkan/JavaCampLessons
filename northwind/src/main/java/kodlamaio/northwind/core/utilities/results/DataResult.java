@@ -1,19 +1,18 @@
 package kodlamaio.northwind.core.utilities.results;
 
 public class DataResult<T> extends Result{
-//T generic 
+
 	private T data;
-	public DataResult(T data,boolean success, String message) {
+	public DataResult(boolean success, String message,T data) {
 		super(success, message);
-		//base sınıfın constructorlarını çalıştımaya yarar
 		this.data=data;
 	}
 
-	public DataResult(T data,boolean success) {
+	public DataResult(boolean success,T data) {
 		super(success);
-		//base sınıfın constructorlarını çalıştımaya yarar
 		this.data=data;
 	}
+	
 	public T getData() {
 		return this.data;
 	}
