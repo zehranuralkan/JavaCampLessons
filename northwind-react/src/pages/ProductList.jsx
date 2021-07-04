@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react'
-
+import { Link } from 'react-router-dom';
 import { Icon, Label, Menu, Table } from 'semantic-ui-react'
 import ProductService from '../services/productService';
 
@@ -9,7 +9,7 @@ useEffect(()=>{
   //komponent yüklendiğinde yapılması gerkeen komut
   let productService=new ProductService()
 productService.getProducts().then(result=>setProducts(result.data.data))
-})
+},[])
     return (
         <div>
           <Table celled>
@@ -29,13 +29,14 @@ productService.getProducts().then(result=>setProducts(result.data.data))
         products.map(products=>(
 
           <Table.Row key={products.id}> 
-          <Table.Cell>{products.productName}</Table.Cell>
+          <Table.Cell><Link to={`/products/${products.productName}`}>{products.productName}</Link></Table.Cell>
           <Table.Cell>{products.unitPrice}</Table.Cell>
           <Table.Cell>{products.unitsInStock}</Table.Cell>
           <Table.Cell>{products.quantityPerUnit}</Table.Cell>
           <Table.Cell>{products.category.categoryName}</Table.Cell>
         </Table.Row>
         )
+
         )
       }
       
